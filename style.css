@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&family=Source+Sans+Pro:ital,wght@0,400;1,200&display=swap");
+
+.container {
+  text-align: left;
+  display: block;
+  position: absolute;
+  margin: 20px auto;
+  padding: 120px 60px;
+  border-radius: 10px;
+}
+
+.row {
+  margin: 10px auto;
+}
+
+.col-2 {
+  border: 1px solid #333;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  margin: 10px 10px;
+  background-color: #162b39;
+  color: #ffffff;
+  border-radius: 10px;
+  width: 120px;
+}
+
+.text {
+  position: relative;
+  bottom: -30px;
+}
+
+.container {
+  margin: 0px auto;
+}
+
+h1 {
+  font-size: 36px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 200;
+}
+
+p {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+}
+
+.emoj {
+  font-size: 36px;
+}
+
+.special {
+  background: #98bcd7;
+  border: none;
+}
+
+.bottom-nav {
+  margin: 40px auto;
+}
+
+button {
+  background-color: #162b39;
+  color: white;
+}
+
+#fahren {
+  color: #ffde55;
+}
