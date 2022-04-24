@@ -20,9 +20,21 @@
       <div class="row">
         <div class="col-10 bottom-nav">
           <h3 id="bottom-title">Explore Other Cities</h3>
-          <form id="signup-form">
-            <input type="text" id="cityName" placeholder="city name" />
-            <button type="submit" class="cityName">Search</button>
+          <form id="search-form">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  id="cityInput"
+                  autocomplete="off"
+                  placeholder="Type a city..."
+                />
+              </div>
+              <div class="col-3">
+                <input type="submit" value="Search" class="button" />
+              </div>
+            </div>
+            <!--<button type="submit" value ="Search" class="cityName">Search</button>-->
             <p>
               <a href="https://github.com/AnnaBleakley/weather-application.git"
                 >Open-source code
@@ -138,9 +150,22 @@
       iconElement.setAttribute("alt", response.data.weather[0].description);
     }
 
-    let city = "Lisbon";
-    let apiKey = "ada02e10de1af69bc78fee31cecf36f4";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayTemperature);
+    function search(city) {
+      let apiKey = "ada02e10de1af69bc78fee31cecf36f4";
+      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+      axios.get(apiUrl).then(displayTemperature);
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      let cityInputElement = document.querySelector("#cityInput");
+      search(cityInputElement.value);
+      console.log(cityInputElement.value);
+    }
+
+    search("New York");
+
+    let form = document.querySelector("#search-form");
+    form.addEventListener("submit", handleSubmit);
   </script>
 </html>
