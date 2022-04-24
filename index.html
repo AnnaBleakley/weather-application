@@ -11,84 +11,136 @@
       crossorigin="anonymous"
     />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="src/style.css">
-    <script src="src/app.js"></script>
+    <link rel="stylesheet" href="src/style.css" />
+    <!--<script src="src/app.js"></script>-->
     <title>Weather App By Anna</title>
   </head>
   <body>
-    <div class="container">
-      <h1 id="currentCity">Temperature in Dublin</h1>
-      <h2 id="currentDate">Monday 15:02</h2>
+    <div class="container-md">
       <div class="row">
-          <div class="col-2 special">
-            <div class="text">
-              <p class="emoj">
-                🌧
-              </p>
-              <h3>Current Temperature</h3>
-              <p id="celcius">8<span id="fahren">°C | °F</span></p>
+        <div class="col-10 bottom-nav">
+          <h3 id="bottom-title">Explore Other Cities</h3>
+          <form id="signup-form">
+            <input type="text" id="cityName" placeholder="city name" />
+            <button type="submit" class="cityName">Search</button>
+            <p>
+              <a href="https://github.com/AnnaBleakley/weather-application.git"
+                >Open-source code
+              </a>
+              by Anna Bleakley
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-10 special">
+          <h2>Last updated:<span id="date"></span></h2>
+          <h1 id="city"></h1>
+          <img src="" alt="Clear" id="icon" />
+          <div class="text">
+            <h3 id="description">Current Temperature</h3>
+            <p>
+              <strong id="temperature"></strong
+              ><span class="units">°C |<a href="#" id="fahren">°F </a></span>
+            </p>
+            <div>
+              <ul>
+                <li>Humidity:<span id="humidity"></span>%</li>
+                <li>Wind<span id="wind"></span>Km/H</li>
+              </ul>
             </div>
           </div>
-          <div class="col-2">
-              <div class="text">
-            <p class="emoj">
-              🌦
-            </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-2">
+          <div class="text">
+            <p class="emoj">🌦</p>
             <h3>Tommorrow</h3>
             <p>11°C</p>
           </div>
-          </div>
-          <div class="col-2">
-              <div class="text">
-            <p class="emoj">
-              ⛅️
-            </p>
-
+        </div>
+        <div class="col-2">
+          <div class="text">
+            <p class="emoj">⛅️</p>
             <h3>Wednesday</h3>
             <p>12°C</p>
           </div>
+        </div>
+        <div class="col-2">
+          <div class="text">
+            <p class="emoj">☀️</p>
+            <h3>Thursday</h3>
+            <p>12°C</p>
           </div>
-        <div class="col-2">
-            <div class="text">
-          <p class="emoj">
-            ☀️
-          </p>
-          <h3>Thursday</h3>
-          <p>12°C</p>
-        </div>
         </div>
         <div class="col-2">
-            <div class="text">
-          <p class="emoj">
-            ⛈
-          </p>
-          <h3>Friday</h3>
-          <p>8°C</p>
-        </div>
+          <div class="text">
+            <p class="emoj">⛈</p>
+            <h3>Friday</h3>
+            <p>8°C</p>
+          </div>
         </div>
         <div class="col-2">
-            <div class="text">
-          <p class="emoj">
-            🌧
-          </p>
-          <h3>Saturday</h3>
-          <p>10°C</p>
+          <div class="text">
+            <p class="emoj">🌧</p>
+            <h3>Saturday</h3>
+            <p>10°C</p>
+          </div>
         </div>
-        </div>
-        <div class="bottom-nav">
-          <h3>Explore Other Cities</h3>
-          <form id="signup-form">
-          <input type="text" id="city" placeholder="city name">
-          <button type="submit" class="cityName">Search</button>
-          <p><a href="https://github.com/AnnaBleakley/weather-application.git">Open-source code </a> by Anna Bleakley</p>
-          </form>
-        </div>
-  </div>
+      </div>
+    </div>
   </body>
+  <script>
+    //calculate the time and date
+    function formatDate(timestamp) {
+      let date = new Date(timestamp);
+      let hours = date.getHours();
+      if (hours < 10) {
+        hours = `0${hours}`;
+      }
+      let minutes = date.getMinutes();
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
+      }
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      let day = days[date.getDay()];
+      return `${day} ${hours}:${minutes}`;
+    }
 
+    //Feature 1: weather search API
+    function displayTemperature(response) {
+      let temperatureElement = document.querySelector("#temperature");
+      let cityElement = document.querySelector("#city");
+      let descriptionElement = document.querySelector("#description");
+      let humidityElement = document.querySelector("#humidity");
+      let windElement = document.querySelector("#wind");
+      dateElement = document.querySelector("#date");
+      let iconElement = document.querySelector("#icon");
+      temperatureElement.innerHTML = Math.round(response.data.main.temp);
+      cityElement.innerHTML = response.data.name;
+      descriptionElement.innerHTML = response.data.weather[0].description;
+      humidityElement.innerHTML = response.data.main.humidity;
+      windElement.innerHTML = Math.round(response.data.wind.speed);
+      dateElement.innerHTML = formatDate(response.data.dt * 1000);
+      iconElement.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      );
+      iconElement.setAttribute("alt", response.data.weather[0].description);
+    }
 
-
-
-
-
-
+    let city = "Lisbon";
+    let apiKey = "ada02e10de1af69bc78fee31cecf36f4";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayTemperature);
+  </script>
+</html>

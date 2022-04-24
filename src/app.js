@@ -14,7 +14,7 @@ console.log(now);
 let days = longDays[now.getDay()];
 let hour = now.getHours();
 let min = now.getMinutes();
-let timeDate = document.querySelector("h2#currentDate");
+let timeDate = document.querySelector("#currentDate");
 timeDate.innerHTML = `${days} ${hour}:${min}`;
 
 //Feature 2: display name on page of user's value
@@ -45,3 +45,12 @@ function showPosition(position) {
 }
 
 navigator.geolocation.getCurrentPosition(showPosition);
+
+//fahrenheit converter
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  alert("Link clicked");
+}
+
+let fahrenheitLink = document.querySelector("#fahren");
+fahrenheitLink.addEventListener(click, "displayFahrenheitTemperature");

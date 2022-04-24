@@ -1,36 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700&family=Source+Sans+Pro:ital,wght@0,400;1,200&display=swap");
 
-.container {
-  text-align: left;
+.container-md {
   display: block;
-  position: absolute;
-  margin: 20px auto;
   padding: 120px 60px;
+  margin: 0px auto;
   border-radius: 10px;
+  background: rgb(252, 218, 136);
+  background: linear-gradient(
+    90deg,
+    rgba(252, 218, 136, 1) 21%,
+    rgba(249, 226, 175, 1) 52%,
+    rgba(254, 243, 218, 1) 71%
+  );
 }
 
 .row {
   margin: 10px auto;
 }
 
+.col-10 {
+  border-radius: 10px;
+  background-color: #f9f8fa;
+  padding: 20px 20px;
+}
+
 .col-2 {
-  border: 1px solid #333;
   padding-top: 60px;
   padding-bottom: 60px;
   margin: 10px 10px;
-  background-color: #162b39;
-  color: #ffffff;
+  background-color: #f9f8fa;
+  color: #000000;
   border-radius: 10px;
-  width: 120px;
+  width: 180px;
+  text-align: center;
 }
 
 .text {
   position: relative;
   bottom: -30px;
-}
-
-.container {
-  margin: 0px auto;
 }
 
 h1 {
@@ -39,10 +46,17 @@ h1 {
   font-weight: 600;
 }
 
+#main {
+  font-size: 26px;
+  font-family: "Inter", sans-serif;
+  margin: 0px 0px;
+}
+
 h3 {
-  font-size: 16px;
+  font-size: 22px;
   font-family: "Inter", sans-serif;
   font-weight: 200;
+  text-transform: capitalize;
 }
 
 p {
@@ -54,20 +68,59 @@ p {
   font-size: 36px;
 }
 
-.special {
-  background: #98bcd7;
-  border: none;
-}
-
 .bottom-nav {
   margin: 40px auto;
 }
 
 button {
-  background-color: #162b39;
+  background-color: #00a396;
   color: white;
+  padding: 10px 60px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
 }
 
-#fahren {
-  color: #ffde55;
+#city {
+  border: 0px;
+  height: 40px;
+  margin-bottom: 10px;
+  background-color: #f3f3f4;
+}
+
+.emoj {
+  font-size: 36px;
+  margin: 0px;
+}
+
+#currentDate {
+  padding: 0px;
+  font-size: 16px;
+}
+
+#units {
+  padding: 10px;
+  font-size: 26px;
+  text-decoration: none;
+}
+
+#main-emoji {
+  font-size: 62px;
+}
+
+.bottom-nav {
+  margin: 0px 0px;
+  margin-top: 36px;
+  background-color: #f9f8fa;
+  border-radius: 10px;
+}
+
+#bottom-title {
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.square-box {
+  max-width: 1200px;
+  min-height: 1200px;
 }
