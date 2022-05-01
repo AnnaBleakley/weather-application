@@ -29,8 +29,6 @@
                   autocomplete="off"
                   placeholder="Type a city..."
                 />
-              </div>
-              <div class="col-3">
                 <input type="submit" value="Search" class="button" />
               </div>
             </div>
@@ -45,62 +43,28 @@
         </div>
       </div>
       <div class="row n">
-        <div class="col-10 special">
-          <h2>Last updated:<span id="date"></span></h2>
+        <div class="col-6 special">
+          <p id="last-date">Last updated: <span id="date"></span></p>
           <h1 id="city"></h1>
           <img src="" alt="Clear" id="icon" />
-          <div class="text">
-            <h3 id="description">Current Temperature</h3>
-            <p>
-              <strong id="temperature"></strong
-              ><span class="units">
-                <a href="#" id="celsius" class="active">°C </a>
-                <a href="#" id="fahren">| °F </a></span
-              >
-            </p>
-            <div>
-              <ul>
-                <li>Humidity:<span id="humidity"></span>%</li>
-                <li>Wind<span id="wind"></span>Km/H</li>
-              </ul>
+          <!--<div class="text">-->
+              <h3 id="description">Current Temperature</h3>
+               <ul class="weather-measurements">
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                  <li style="padding-left:1em">Wind: <span id="wind"></span>Km/H</li>
+                </ul>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-2">
-          <div class="weather-text">
-            <p class="emoj">🌦</p>
-            <h3>Tommorrow</h3>
-            <p>11°C</p>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="text">
-            <p class="emoj">⛅️</p>
-            <h3>Wednesday</h3>
-            <p>12°C</p>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="text">
-            <p class="emoj">☀️</p>
-            <h3>Thursday</h3>
-            <p>12°C</p>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="text">
-            <p class="emoj">⛈</p>
-            <h3>Friday</h3>
-            <p>8°C</p>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="text">
-            <p class="emoj">🌧</p>
-            <h3>Saturday</h3>
-            <p>10°C</p>
+              <div class="col-6 degrees justify-content-center">
+                <p>
+                <strong id="temperature"></strong
+                ><span class="units">
+                  <a href="#" id="celsius" class="active">°C |</a>
+                  <a href="#" id="fahren"> °F </a></span
+                >
+              </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

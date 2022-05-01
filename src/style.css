@@ -2,9 +2,9 @@
 
 .container-md {
   display: block;
-  padding: 120px 60px;
-  margin: 0px auto;
+  padding: 40px;
   border-radius: 10px;
+  max-width: 800px;
   background: rgb(252, 218, 136);
   background: linear-gradient(
     90deg,
@@ -85,7 +85,6 @@ button {
   border: 0px;
   height: 40px;
   margin-bottom: 10px;
-  background-color: #f3f3f4;
 }
 
 .emoj {
@@ -129,16 +128,49 @@ a:link {
   text-decoration: none;
 }
 
-.special .active {
+.degrees .active {
   color: rgb(33, 33, 33);
   cursor: default;
 }
 
-.special .active:hover {
+.degrees .active:hover {
   text-decoration: none;
 }
 
-.text .active {
+.weather-text .active {
   color: black;
   cursor: default;
+}
+
+.weather-measurements {
+  list-style: none;
+  display: inline;
+}
+
+#last-date {
+  font-size: 16px;
+}
+
+.weather-measurements li {
+  display: inline;
+  float: left;
+}
+
+.degrees p {
+  padding-top: 60px;
+  font-size: 60px;
+}
+
+#cityInput {
+  border: none;
+  padding: 10px;
+  background-color: #f5f5f5;
+}
+
+.button {
+  background-color: #00a396;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #ffffff;
 }
