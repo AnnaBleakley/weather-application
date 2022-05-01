@@ -124,3 +124,21 @@ button {
   max-width: 1200px;
   min-height: 1200px;
 }
+
+a:link {
+  text-decoration: none;
+}
+
+.special .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+}
+
+.special .active:hover {
+  text-decoration: none;
+}
+
+.text .active {
+  color: black;
+  cursor: default;
+}
