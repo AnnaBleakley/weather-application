@@ -64,7 +64,7 @@
               </p>
                 </div>
               </div>
-              <div class="weather-forecast">
+              <div class="weather-forecast" id="other-days">
               <div class="row">
                 <div class="col-2">
                   <div class="weather-day">
@@ -109,6 +109,32 @@
       return `${day} ${hours}:${minutes}`;
     }
 
+//adding replica HTML content
+function displayForecast() {
+  let forecastElement = document.querySelector("#other-days");
+
+let forecastHTML = `<div class = "row">`;
+let days = ["Thur", "Fri", "Sat", "Sun"];
+days.forEach(function(day) {
+forecastHTML = forecastHTML +
+`           <div class="col-2">
+                  <div class="weather-day">
+                    ${day}
+                  </div>
+                  <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" width="46"/>
+                  <div class="weather-temperature">
+                    <span class="weather-forecase-max">18°</span>
+                    <span class="weather-forecase-minx">12°</span>
+                  </div>
+                </div>`;
+                  });
+forecastElement.innerHTML = forecastHTML;
+
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+ 
+}
+
     //Feature 1: weather search API
     function displayTemperature(response) {
       let temperatureElement = document.querySelector("#temperature");
@@ -132,6 +158,8 @@
         `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
       );
       iconElement.setAttribute("alt", response.data.weather[0].description);
+
+      displayForecast();
     }
 
     function search(city) {
