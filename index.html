@@ -12,7 +12,7 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
-    <!--<script src="src/app.js"></script>-->
+    <script src="src/app.js"></script>
     <title>Weather App By Anna</title>
   </head>
   <body>
@@ -28,11 +28,11 @@
                   id="cityInput"
                   autocomplete="off"
                   placeholder="Type a city..."
+                  class="form-control"
                 />
                 <input type="submit" value="Search" class="button" />
               </div>
             </div>
-            <!--<button type="submit" value ="Search" class="cityName">Search</button>-->
             <p>
               <a href="https://github.com/AnnaBleakley/weather-application.git"
                 >Open-source code
@@ -84,126 +84,4 @@
       </div>
     </div>
   </body>
-  <script>
-    //calculate the time and date
-    function formatDate(timestamp) {
-      let date = new Date(timestamp);
-      let hours = date.getHours();
-      if (hours < 10) {
-        hours = `0${hours}`;
-      }
-      let minutes = date.getMinutes();
-      if (minutes < 10) {
-        minutes = `0${minutes}`;
-      }
-      let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ];
-      let day = days[date.getDay()];
-      return `${day} ${hours}:${minutes}`;
-    }
-
-//adding replica HTML content
-function displayForecast() {
-  let forecastElement = document.querySelector("#other-days");
-
-let forecastHTML = `<div class = "row">`;
-let days = ["Thur", "Fri", "Sat", "Sun"];
-days.forEach(function(day) {
-forecastHTML = forecastHTML +
-`           <div class="col-2">
-                  <div class="weather-day">
-                    ${day}
-                  </div>
-                  <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" width="46"/>
-                  <div class="weather-temperature">
-                    <span class="weather-forecase-max">18°</span>
-                    <span class="weather-forecase-minx">12°</span>
-                  </div>
-                </div>`;
-                  });
-forecastElement.innerHTML = forecastHTML;
-
-forecastHTML = forecastHTML + `</div>`;
-forecastElement.innerHTML = forecastHTML;
- 
-}
-
-    //Feature 1: weather search API
-    function displayTemperature(response) {
-      let temperatureElement = document.querySelector("#temperature");
-      let cityElement = document.querySelector("#city");
-      let descriptionElement = document.querySelector("#description");
-      let humidityElement = document.querySelector("#humidity");
-      let windElement = document.querySelector("#wind");
-      dateElement = document.querySelector("#date");
-      let iconElement = document.querySelector("#icon");
-
-      celsiusTemperature = response.data.main.temp;
-
-      temperatureElement.innerHTML = Math.round(celsiusTemperature);
-      cityElement.innerHTML = response.data.name;
-      descriptionElement.innerHTML = response.data.weather[0].description;
-      humidityElement.innerHTML = response.data.main.humidity;
-      windElement.innerHTML = Math.round(response.data.wind.speed);
-      dateElement.innerHTML = formatDate(response.data.dt * 1000);
-      iconElement.setAttribute(
-        "src",
-        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-      );
-      iconElement.setAttribute("alt", response.data.weather[0].description);
-
-      displayForecast();
-    }
-
-    function search(city) {
-      let apiKey = "ada02e10de1af69bc78fee31cecf36f4";
-      let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-      axios.get(apiUrl).then(displayTemperature);
-    }
-
-    function handleSubmit(event) {
-      event.preventDefault();
-      let cityInputElement = document.querySelector("#cityInput");
-      search(cityInputElement.value);
-      console.log(cityInputElement.value);
-    }
-
-    search("New York");
-
-    let form = document.querySelector("#search-form");
-    form.addEventListener("submit", handleSubmit);
-
-    //fahrenheit converter
-    function displayFahrenheitTemperature(event) {
-      event.preventDefault();
-      let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-      let temperatureElement = document.querySelector("#temperature");
-      celsisusLink.classList.remove("active");
-      fahrenheitLink.classList.add("active");
-      temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-    }
-
-    function displayCelsiusTemperature(event) {
-      event.preventDefault();
-      celsisusLink.classList.add("active");
-      fahrenheitLink.classList.remove("active");
-      let temperatureElement = document.querySelector("#temperature");
-      temperatureElement.innerHTML = Math.round(celsiusTemperature);
-    }
-
-    celsiusTemperature = null;
-
-    let fahrenheitLink = document.querySelector("#fahren");
-    fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-    let celsisusLink = document.querySelector("#celsius");
-    celsisusLink.addEventListener("click", displayCelsiusTemperature);
-  </script>
 </html>
